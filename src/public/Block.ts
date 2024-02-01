@@ -85,7 +85,7 @@ export class Block
 
 	/**
    * Gets the form associated with the block.
-   * 
+   *
    * @returns The associated form.
    */
 	public get form() : Form
@@ -95,7 +95,7 @@ export class Block
 
 	/**
    * Gets the name of the block.
-   * 
+   *
    * @returns The name of the block.
    */
 	public get name() : string
@@ -104,7 +104,7 @@ export class Block
 	}
 
 	/** Is update allowed *
-	* 
+	*
    * @returns Whether update is allowed.
    */
 	public get updateallowed() : boolean
@@ -113,7 +113,7 @@ export class Block
 	}
 
 	/** Is update allowed *
-	* 
+	*
    * @param flag - The flag to set.
    */
 	public set updateallowed(flag:boolean)
@@ -129,7 +129,7 @@ export class Block
 	}
 
 	/** Flush when leaving row or block
-	* 
+	*
    * @returns The flush strategy.
    */
 	public get flushStrategy() : FlushStrategy
@@ -137,8 +137,8 @@ export class Block
 		return(this.flush$);
 	}
 
-	/** Flush when leaving row or block * 
-	* 
+	/** Flush when leaving row or block *
+	*
    * @param strategy - The flush strategy to set.
    */
 	public set flushStrategy(strategy:FlushStrategy)
@@ -146,8 +146,8 @@ export class Block
 		this.flush$ = strategy;
 	}
 
-	/** The dynamic query filters applied to this block 
- 	* 
+	/** The dynamic query filters applied to this block
+ 	*
    * @returns The filter structure.
    */
 	public get filter() : FilterStructure
@@ -155,8 +155,8 @@ export class Block
 		return(FormBacking.getModelBlock(this).QueryFilter);
 	}
 
-	/** Current row number in block  * 
-	* 
+	/** Current row number in block  *
+	*
    * @returns The current row number.
    */
 	public get row() : number
@@ -164,7 +164,7 @@ export class Block
 		return(FormBacking.getViewBlock(this).row);
 	}
 
-	/** Number of displayed rows in block * 
+	/** Number of displayed rows in block *
 	*
    * @returns The number of displayed rows.
    */
@@ -174,7 +174,7 @@ export class Block
 	}
 
 	/** Sets focus on this block.
-   * 
+   *
    * @returns A promise resolving to a boolean indicating success.
    */
 	public async focus() : Promise<boolean>
@@ -182,7 +182,7 @@ export class Block
 		return(FormBacking.getViewBlock(this).focus());
 	}
 
-	/** Current record number in block * 
+	/** Current record number in block *
    *
 	* @returns The current record number.
    */
@@ -192,7 +192,7 @@ export class Block
 	}
 
 	/** The state of the current record   *
-   * 
+   *
    * @returns The state of the current record.
    */
 	public get state() : RecordState
@@ -200,7 +200,7 @@ export class Block
 		return(this.getRecord()?.state);
 	}
 
-	/** Get all field names 
+	/** Get all field names
 	*
 	* @returns An array of field names.
    */
@@ -209,7 +209,7 @@ export class Block
 		return(FormBacking.getViewBlock(this).getFieldNames());
 	}
 
-	/** Flush changes to backend  
+	/** Flush changes to backend
 	*
    */
 	public flush() : void
@@ -217,8 +217,8 @@ export class Block
 		FormBacking.getModelBlock(this).flush();
 	}
 
-	/** Clear the block. If force, no validation will take place    * 
-	* 
+	/** Clear the block. If force, no validation will take place    *
+	*
    * @param force - Whether to force clearing without validation.
    * @returns A promise resolving to a boolean indicating success.
    */
@@ -227,7 +227,7 @@ export class Block
 		return(FormBacking.getModelBlock(this).clear(!force));
 	}
 
-	/** Is the block in query mode 
+	/** Is the block in query mode
    *
 	* @returns Whether the block is in query mode.
    */
@@ -237,7 +237,7 @@ export class Block
 	}
 
 	/** Is the block empty
-	* 
+	*
    * @returns Whether the block is empty.
    */
 	public empty() : boolean
@@ -246,8 +246,8 @@ export class Block
 	}
 
 	/** Refresh (re-query) the record
-	* 
-   * @param offset - Offset to the current record. 
+	*
+   * @param offset - Offset to the current record.
 	*/
 	public async refresh(offset?:number) : Promise<void>
 	{
@@ -255,8 +255,8 @@ export class Block
 		await FormBacking.getModelBlock(this).refresh(offset,true);
 	}
 
-	/** Is field bound to this block 
-	* 
+	/** Is field bound to this block
+	*
    * @param name - The name of the field.
    * @returns Whether the field is bound to this block.
    */
@@ -265,8 +265,8 @@ export class Block
 		return(this.fields.includes(name?.toLowerCase()));
 	}
 
-	/** Show the datepicker for the specified field 
-	* 
+	/** Show the datepicker for the specified field
+	*
 	* @param field - The name of the field for which the date picker should be displayed.
    * @param row - Optional parameter specifying the row number.
    */
@@ -276,8 +276,8 @@ export class Block
 		FormBacking.getViewForm(this.form).showDatePicker(this.name,field,row);
 	}
 
-	/** Show the LOV associated with the field. 
-	* Normally only 1 LOV can be active, force overrules this rule 
+	/** Show the LOV associated with the field.
+	* Normally only 1 LOV can be active, force overrules this rule
 	*
  	* @param field - The name of the field for which the LOV should be displayed.
    * @param row - Optional parameter specifying the row number.
@@ -321,7 +321,7 @@ export class Block
 	}
 
 	/** Navigates to the next record.
-	* 
+	*
    * @returns A promise that resolves to a boolean indicating the success of the operation.
    */
 	public async nextrecord() : Promise<boolean>
@@ -330,7 +330,7 @@ export class Block
 	}
 
 	/** Navigates to a specific row.
-   * 
+   *
    * @param row - The row number to navigate to.
    * @returns A promise that resolves to a boolean indicating the success of the operation.
    */
@@ -339,7 +339,7 @@ export class Block
 		return(FormBacking.getViewBlock(this).goRow(row));
 	}
 
-	/** Navigate to field 
+	/** Navigate to field
 	*
 	* @param field - The name of the field to navigate to.
  	* @param clazz - Optional parameter narrowing down to a specific field class.
@@ -351,7 +351,7 @@ export class Block
 	}
 
 	/** Is this a control block (not bound to a datasource)
-	*   
+	*
 	* @returns A boolean indicating whether the block is a control block.
  	*/
 	public isControlBlock() : boolean
@@ -360,7 +360,7 @@ export class Block
 	}
 
 	/** Get the LOV for the given block and field
-	*   
+	*
 	* @param field - The name of the field for which the LOV is retrieved.
  	* @returns The List of Values (LOV) associated with the specified field.
  	*/
@@ -369,8 +369,8 @@ export class Block
 		return(FormBacking.getBacking(this.form).getListOfValues(this.name,field));
 	}
 
-	/** Bind LOV to field(s) 
-	* 
+	/** Bind LOV to field(s)
+	*
 	* @param lov - The List of Values (LOV) to bind.
  	* @param field - The name of the field or an array of field names to bind the LOV to.
 	*/
@@ -383,8 +383,8 @@ export class Block
 			FormBacking.getBacking(this.form).setListOfValues(this.name,field[i],lov);
 	}
 
-	/** Remove LOV from field(s) 
-	* 
+	/** Remove LOV from field(s)
+	*
 	* @param field - The name of the field or an array of field names to remove the LOV from.
  	*/
 	public removeListOfValues(field:string|string[]) : void
@@ -397,7 +397,7 @@ export class Block
 	}
 
 	/** Specify a constraint on possible valid dates
-	*  
+	*
 	* @param constraint - The date constraint to apply.
 	* @param field - The name of the field or an array of field names to apply the constraint to.
 	*/
@@ -410,11 +410,47 @@ export class Block
 			FormBacking.getBacking(this.form).setDateConstraint(this.name,field[i],constraint);
 	}
 
+	/** Set valid values for a given field */
+	public setValidValues(field: string | string[], values: string[] | Set<any> | Map<any,any>) : void
+	{
+		if (!Array.isArray(field))
+			field = [field];
+
+		let map:Map<any,any> = new Map<any,any>();
+
+		if (Array.isArray(values) || values instanceof Set)
+		{
+			values.forEach((value:string) => {map.set(value,value)});
+		}
+		else
+		{
+			map = values;
+		}
+
+		field.forEach((fld) =>
+		{
+			FormBacking.getViewBlock(this).getInstancesByClass(fld).forEach((inst) =>
+			{
+				inst.properties.setValidValues(map);
+				inst.qbeProperties.setValidValues(map);
+				inst.insertProperties.setValidValues(map);
+				inst.updateProperties.setValidValues(map);
+				inst.defaultProperties.setValidValues(map);
+
+				if (inst.element instanceof HTMLSelectElement)
+					FieldFeatureFactory.setSelectOptions(inst.element,inst.properties);
+
+				if (inst.element instanceof HTMLInputElement)
+					FieldFeatureFactory.createDataList(inst,inst.properties);
+			})
+		})
+	}
+
 	/** Get data from datasource
-	*  
-	* @param header: include column names 
+	*
+	* @param header: include column names
 	* @param all: fetch all data from datasource
-	* @returns A promise that resolves to a two-dimensional array representing the data. 
+	* @returns A promise that resolves to a two-dimensional array representing the data.
 	*/
 	public async getSourceData(header?:boolean, all?:boolean) : Promise<any[][]>
 	{
@@ -439,7 +475,7 @@ export class Block
 	}
 
 	/** Gets the datasource associated with the model block.
-	* 
+	*
 	* @returns The datasource associated with the model block.
 	*/
 	public get datasource() : DataSource
@@ -448,7 +484,7 @@ export class Block
 	}
 
 	/** Sets the datasource for the model block.
-	* 
+	*
 	* @param source - The new datasource to set.
 	*/
 	public set datasource(source:DataSource)
@@ -457,7 +493,7 @@ export class Block
 	}
 
 	/** Delete the current record
-	*  
+	*
 	* @returns A promise that resolves to a boolean indicating the success of the operation.
  	*/
 	public async delete() : Promise<boolean>
@@ -467,7 +503,7 @@ export class Block
 
 	/** Insert a blank record
 	*
-	* @param before: Insert above the current row 
+	* @param before: Insert above the current row
 	* @returns A promise that resolves to a boolean indicating the success of the operation.
 	*/
 	public async insert(before?:boolean) : Promise<boolean>
@@ -476,7 +512,7 @@ export class Block
 	}
 
 	/** Gets the value of a field from the current record.
-	* 
+	*
 	* @param field - The name of the field to retrieve the value from.
 	* @returns The value of the specified field in the current record.
 	*/
@@ -495,8 +531,8 @@ export class Block
 		this.getRecord()?.setValue(field,value);
 	}
 
-	/** Is the block in a valid state 
-	* 
+	/** Is the block in a valid state
+	*
 	* @param field - The name of the field to check the validity for.
  	* @returns A boolean indicating whether the block is in a valid state for the specified field.
  	*/
@@ -506,7 +542,7 @@ export class Block
 	}
 
 	/** Mark the field valid
-	*  
+	*
 	* @param field - The name of the field to mark as valid or invalid.
  	* @param flag - A boolean flag indicating whether to mark the field as valid or invalid.
  	*/
@@ -516,7 +552,7 @@ export class Block
 	}
 
 	/** Gets the name of the current field in the view block.
-	* 
+	*
 	* @returns The name of the current field.
 	*/
 	public getCurrentField() : string
@@ -524,24 +560,24 @@ export class Block
 		return(FormBacking.getViewBlock(this).current.name);
 	}
 
-	/** Is block synchronized with backend 
-	* 
-	* @returns A boolean indicating whether the block has pending changes. 
+	/** Is block synchronized with backend
+	*
+	* @returns A boolean indicating whether the block has pending changes.
 	*/
 	public hasPendingChanges() : boolean
 	{
 		return(FormBacking.getModelBlock(this).getPendingCount() > 0);
 	}
 
-	/** Show the last query for this block 
+	/** Show the last query for this block
 	*/
 	public showLastQuery() : void
 	{
 		FormBacking.getModelBlock(this).showLastQuery();
 	}
 
-	/** setAndValidate field value as if changed by a user (fire all events) 
-	* 
+	/** setAndValidate field value as if changed by a user (fire all events)
+	*
 	* @param field - The name of the field to set and validate.
 	* @param value - The new value to set for the field.
 	* @returns A promise that resolves to a boolean indicating the success of the operation.
@@ -551,8 +587,8 @@ export class Block
 		return(this.getRecord().setAndValidate(field,value));
 	}
 
-	/** Lock current record 
-	* 
+	/** Lock current record
+	*
 	* @returns A promise that resolves when the record is successfully locked.
 	*/
 	public async lock() : Promise<void>
@@ -560,8 +596,8 @@ export class Block
 		this.getRecord().lock();
 	}
 
-	/** Mark the current record as dirty 
-	* 
+	/** Mark the current record as dirty
+	*
 	* @param field - Optional parameter specifying the field to mark as dirty.
 	*/
 	public setDirty(field?:string) : void
@@ -602,15 +638,15 @@ export class Block
 		return(intrec == null ? null : new Record(intrec));
 	}
 
-	/** Rehash the fields. Typically after dynamic insert/delete of HTML elements 
+	/** Rehash the fields. Typically after dynamic insert/delete of HTML elements
 	*/
 	public reIndexFieldOrder() : void
 	{
 		FormBacking.getViewForm(this.form).rehash(this.name);
 	}
 
-	/** Get properties used in Query By Example mode 
-	* 
+	/** Get properties used in Query By Example mode
+	*
 	* @param field - The name of the field to retrieve QBE properties for.
 	* @returns The properties used in QBE mode for the specified field, or `null` if not found.
 	*/
@@ -622,8 +658,8 @@ export class Block
 		return(null);
 	}
 
-	/** Get properties used in insert mode 
-	* 
+	/** Get properties used in insert mode
+	*
 	* @param field - The name of the field to retrieve insert mode properties for.
 	* @returns The properties used in insert mode for the specified field, or `null` if not found.
 	*/
@@ -635,11 +671,11 @@ export class Block
 		return(null);
 	}
 
-	/** Get properties used in display mode 
+	/** Get properties used in display mode
 	*
 	* @param field - The name of the field to retrieve display mode properties for.
 	* @returns The properties used in display mode for the specified field, or `null` if not found.
-	*/ 
+	*/
 	public getDefaultProperties(field:string) : FieldProperties
 	{
 		field = field?.toLowerCase();
@@ -648,7 +684,7 @@ export class Block
 		return(null);
 	}
 
-	/** As in getQBEProperties, but narrow down on the field id 
+	/** As in getQBEProperties, but narrow down on the field id
 	*
 	* @param field - The name of the field to retrieve QBE properties for.
 	* @param id - The ID of the field to narrow down the search.
@@ -678,7 +714,7 @@ export class Block
 		return(null);
 	}
 
-	/** As in getDefaultProperties, but narrow down on the field id 
+	/** As in getDefaultProperties, but narrow down on the field id
 	*
 	* @param field - The name of the field to retrieve display mode properties for.
 	* @param id - The ID of the field to narrow down the search.
@@ -700,8 +736,8 @@ export class Block
 		return(props.length == 0 ? null : props[0])
 	}
 
-	/** As in getInsertProperties, but narrow down a given class 
-	* 
+	/** As in getInsertProperties, but narrow down a given class
+	*
 	* @param field - The name of the field to retrieve QBE properties for.
 	* @param clazz - The class to narrow down the search.
 	* @returns The properties used in QBE mode for the specified class, or `null` if not found.
@@ -712,8 +748,8 @@ export class Block
 		return(props.length == 0 ? null : props[0])
 	}
 
-	/** As in getDefaultProperties, but narrow down a given class 
-	* 
+	/** As in getDefaultProperties, but narrow down a given class
+	*
 	* @param field - The name of the field to retrieve insert mode properties for.
 	* @param clazz - The class to narrow down the search.
 	* @returns The properties used in insert mode for the specified class, or `null` if not found.
@@ -724,7 +760,7 @@ export class Block
 		return(props.length == 0 ? null : props[0])
 	}
 
-	/** Get properties for all fields in Query By Example mode 
+	/** Get properties for all fields in Query By Example mode
 	*
 	* @param field - The name of the field to retrieve QBE properties for.
 	* @param clazz - The class to narrow down the search.
@@ -740,7 +776,7 @@ export class Block
 		return(props);
 	}
 
-	/** Get properties for all fields in insert mode 
+	/** Get properties for all fields in insert mode
 	*
 	* @param field - The name of the field to retrieve insert mode properties for.
 	* @param clazz - The class to narrow down the search.
@@ -756,8 +792,8 @@ export class Block
 		return(props);
 	}
 
-	/** Get properties for all fields in display mode 
-	* 
+	/** Get properties for all fields in display mode
+	*
 	* @param field - The name of the field to retrieve display mode properties for.
 	* @param clazz - The class to narrow down the search.
 	* @returns An array of properties used in display mode for all fields with the specified class.
@@ -773,7 +809,7 @@ export class Block
 	}
 
 	/** Apply Query By Example (QBE) properties to field
-	* 
+	*
 	* @param props - The QBE properties to apply.
 	* @param field - The name of the field to apply QBE properties to.
 	* @param clazz - The class to narrow down the fields.
@@ -786,8 +822,8 @@ export class Block
 		forEach((inst) => {FieldFeatureFactory.replace(props,inst,Status.qbe);})
 	}
 
-	/** Apply insert properties to field 
-	* 
+	/** Apply insert properties to field
+	*
 	* @param props - The insert properties to apply.
 	* @param field - The name of the field to apply insert properties to.
 	* @param clazz -  narrow down on class
@@ -801,10 +837,10 @@ export class Block
 	}
 
 	/** Apply display properties to field
-	* 
+	*
 	* @param props - The display properties to apply.
  	* @param field - The name of the field to apply display properties to.
-	* @param clazz - narrow down on class 
+	* @param clazz - narrow down on class
 	*/
 	public setDefaultProperties(props:FieldProperties, field:string, clazz?:string) : void
 	{
@@ -814,8 +850,8 @@ export class Block
 		forEach((inst) => {FieldFeatureFactory.replace(props,inst,Status.update);})
 	}
 
-	/** Apply Query By Example properties to field param class - narrow down on id 
-	* 
+	/** Apply Query By Example properties to field param class - narrow down on id
+	*
 	* @param props - The QBE properties to apply.
  	* @param field - The name of the field to apply QBE properties to.
  	* @param id - The ID of the field to narrow down the search.
@@ -828,8 +864,8 @@ export class Block
 		FieldFeatureFactory.replace(props,inst,Status.qbe);
 	}
 
-	/** Apply insert properties to field param class - narrow down on id 
-	* 
+	/** Apply insert properties to field param class - narrow down on id
+	*
 	* @param props - The insert properties to apply.
 	* @param field - The name of the field to apply insert properties to.
 	* @param id - The ID of the field to narrow down the search.
@@ -842,8 +878,8 @@ export class Block
 		FieldFeatureFactory.replace(props,inst,Status.insert);
 	}
 
-	/** Apply display properties to field param clazz: narrow down on id 
-	* 
+	/** Apply display properties to field param clazz: narrow down on id
+	*
 	* @param props - The display properties to apply.
 	* @param field - The name of the field to apply display properties to.
 	* @param id - The ID of the field to narrow down the search.
@@ -856,8 +892,8 @@ export class Block
 		FieldFeatureFactory.replace(props,inst,Status.update);
 	}
 
-	/** Re query the block with current filters 
-	* 
+	/** Re query the block with current filters
+	*
 	* This method triggers a requery operation on the block, refreshing the data based on the current filters.
    *
 	* @returns A Promise that resolves to `true` if the requery is successful, otherwise `false`.
@@ -867,7 +903,7 @@ export class Block
 		return(FormBacking.getModelForm(this.form).executeQuery(this.name,true,true));
 	}
 
-	/** Escape Query By Example mode 
+	/** Escape Query By Example mode
 	*
 	* This method cancels the Query By Example mode for the block, allowing the user to return to the regular mode.
 	*/
@@ -876,8 +912,8 @@ export class Block
 		FormBacking.getModelForm(this.form).cancelQueryMode(this.name);
 	}
 
-	/** Enter Query By Example mode 
-	* 
+	/** Enter Query By Example mode
+	*
 	* This method activates the Query By Example mode for the block, allowing the user to perform queries based on example values.
 	*
 	* @returns A Promise that resolves to `true` if entering QBE mode is successful, otherwise `false`.
@@ -888,7 +924,7 @@ export class Block
 	}
 
 	/** Executes a query on the block.
-	* 
+	*
 	* This method initiates the execution of a query on the block, retrieving and displaying the results.
 	*
 	* @returns A Promise that resolves to `true` if the query execution is successful, otherwise `false`.
@@ -898,17 +934,17 @@ export class Block
 		return(FormBacking.getModelForm(this.form).executeQuery(this.name,false,true));
 	}
 
-	/** Remove event listener 
-	* 
-	* @param handle - the handle returned when applying the event listener 
+	/** Remove event listener
+	*
+	* @param handle - the handle returned when applying the event listener
 	*/
 	public removeEventListener(handle:object) : void
 	{
 		FormEvents.removeListener(handle);
 	}
 
-	/** Apply event listener. 
-	* 
+	/** Apply event listener.
+	*
 	* @param method - The trigger function to be executed when the event occurs.
 	* @param filter - A filter on the event (optional).
 	* @returns An object representing the handle for the applied event listener.
@@ -920,8 +956,8 @@ export class Block
 		return(FormEvents.addListener(this.form,this,method,filter));
 	}
 
-	/** Dump the fetched records to the console 
-	* 
+	/** Dump the fetched records to the console
+	*
 	*/
 	public dump() : void
 	{
