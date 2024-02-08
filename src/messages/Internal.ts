@@ -9,14 +9,14 @@
  * the raised error code would be '5030-0017'.
  * 
  * List of message groups:
- * * TRX: 5020 Transactions
- * * SQL: 5030 Propagate messages from database
- * * ORDB: 5010 Propagate messages from OpenRestDB
- * * FORM: 5040 Form messages
- * * BLOCK: 5050 Block messages
- * * FIELD: 5060 Field messages
- * * FRAMEWORK: 5000 Internal framework messages
- * * VALIDATION: 5070 Validation
+ * * 5000: FRAMEWORK - Internal framework messages
+ * * 5010: ORDB - Propagate messages from OpenRestDB
+ * * 5020: TRX - Transactions
+ * * 5030: SQL - Propagate messages from database
+ * * 5040: FORM - Form messages
+ * * 5050: BLOCK - Block messages
+ * * 5060: FIELD - Field messages
+ * * 5070: VALIDATION - Validation
  */
 export class MSGGRP
 {
